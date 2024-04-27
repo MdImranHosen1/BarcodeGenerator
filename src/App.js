@@ -1,30 +1,24 @@
 import React, { useEffect } from 'react';
 import './App.css';
-import bwipjs from 'bwip-js';
+import { PDF417Form } from './component/PDF417Form';
+import { UpperCase } from './component/UpperCase';
+import { Code128Form } from './component/Code128Form';
+
 
 function App() {
-    useEffect(() => {
-        try {
-            // The return value is the canvas element
-            let canvas = bwipjs.toCanvas('mycanvas', {
-                bcid: 'code128',       // Barcode type
-                text: '0123456789',    // Text to encode
-                scale: 3,              // 3x scaling factor
-                height: 10,            // Bar height, in millimeters
-                includetext: true,     // Show human-readable text
-                textxalign: 'center',  // Always good to set this
-            });
-        } catch (e) {
-            console.error('Error generating barcode:', e);
-        }
-    }, []); // Run once on component mount
+    
 
     return (
         <div className="App">
-            <header className="App-header">
-                <p>Barcode:</p>
-                <canvas id="mycanvas"></canvas>
-            </header>
+           <div className=' mb-40'>  <UpperCase/></div>
+            <div>
+            
+              <PDF417Form></PDF417Form>
+            </div>
+            <div>
+              <Code128Form/>
+            </div>
+            
         </div>
     );
 }
